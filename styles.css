@@ -136,7 +136,16 @@ table {
 
 /*start here*/
 
-th {
+th,
+td {
     border-style: solid;
+    padding: 5px;
+}
+
+th {
+    border-width: 5px;
+}
+
+td {
     border-width: 1px;
 }
