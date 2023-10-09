@@ -11,13 +11,10 @@ function Book(title, author, pages, read) {
 function updateTable() {
     let rows = []
     myLibrary.forEach((value, index, array) => {
-        console.log(value);
         let row = document.createElement('tr');
 
         let title = document.createElement('td');
         title.textContent = value.title;
-        console.log(value.title);
-        console.log(title.textContent);
 
         let author = document.createElement('td');
         author.textContent = value.author;
