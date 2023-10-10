@@ -32,6 +32,10 @@ function updateTable() {
         let removeButton = document.createElement('button');
         removeButton.textContent = 'Remove Book';
         removeButton.dataset.index = index;
+        removeButton.addEventListener('click', () => {
+            myLibrary.splice(removeButton.dataset.index, 1);
+            updateTable();
+        })
 
         row.appendChild(title);
         row.appendChild(author);
