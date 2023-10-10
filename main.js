@@ -35,10 +35,30 @@ function updateTable() {
     TABLE.replaceChildren(...rows);
 }
 
-function addBookToLibrary() {
+function addBookToLibrary(title, author, pages, read) {
     // TODO
 }
 
 let hol = new Book('House of Leaves', 'Mark Z. Danielewski', 709, true);
 myLibrary.push(hol);
 updateTable();
+
+const submitButton = document.querySelector("#submit");
+submitButton.addEventListener('click', (event) => {
+    const titleInput = document.querySelector('#title');
+    let title = titleInput.value;
+
+    const authorInput = document.querySelector('#author');
+    let author = authorInput.value;
+
+    const pageInput = document.querySelector('#numpages');
+    let numPages = pageInput.value;
+
+    const readInput = document.querySelector('#read');
+    let read = readInput.checked;
+
+    let book = new Book(title, author, numPages, read);
+    myLibrary.push(book);
+    updateTable();
+    event.preventDefault();
+});
