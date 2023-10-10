@@ -29,10 +29,15 @@ function updateTable() {
         let read = document.createElement('td');
         read.textContent = value.read;
 
+        let removeButton = document.createElement('button');
+        removeButton.textContent = 'Remove Book';
+        removeButton.dataset.index = index;
+
         row.appendChild(title);
         row.appendChild(author);
         row.appendChild(pages);
         row.appendChild(read);
+        row.appendChild(removeButton);
         rows.push(row);
     })
 
