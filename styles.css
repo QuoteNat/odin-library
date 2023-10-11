@@ -136,6 +136,10 @@ table {
 
 /*start here*/
 
+table {
+    margin: 5px;
+}
+
 th,
 td {
     border-style: solid;
@@ -148,4 +152,8 @@ th {
 
 td {
     border-width: 1px;
+}
+
+button {
+    margin: 5px;
 }
