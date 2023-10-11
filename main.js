@@ -27,7 +27,13 @@ function updateTable() {
         pages.textContent = value.pages;
 
         let read = document.createElement('td');
-        read.textContent = value.read;
+        let checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.checked = value.read;
+        checkbox.addEventListener('click', () => {
+            value.read = checkbox.checked;
+        });
+        read.appendChild(checkbox);
 
         let removeButton = document.createElement('button');
         removeButton.textContent = 'Remove Book';
