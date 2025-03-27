@@ -26,18 +26,18 @@
     <dialog id="add-book-dialog">
         <form action="" id="book-form">
             <label for="title">Book Title</label>
-            <input type="text" name="title" id="title">
+            <input required type="text" name="title" id="title">
 
             <label for="Author">Author</label>
-            <input type="text" name="Author" id="author">
+            <input required type="text" name="Author" id="author">
 
             <label for="numpages">Number of Pages</label>
-            <input type="number" name="numpages" id="numpages">
+            <input required type="number" name="numpages" id="numpages">
 
             <label for="read">Read</label>
-            <input type="checkbox" name="read" id="read">
+            <input required type="checkbox" name="read" id="read">
 
-            <button id="submit">Submit</button>
+            <input type="submit" id="submit">Submit</input>
         </form>
     </dialog>
     <script src="main.js"></script>

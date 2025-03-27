@@ -66,6 +66,20 @@ submitButton.addEventListener("click", (event) => {
   const pageInput = document.querySelector("#numpages");
   const readInput = document.querySelector("#read");
 
+  if (titleInput.value === "") {
+    titleInput.setCustomValidity("The book can't have an empty title.");
+    return;
+  }
+
+  // Technically speaking, it's possible for books to not have authors or known authors, so I'm allowing empty string for that edge case specifically.
+
+  if (pageInput.value === "") {
+    pageInput.setCustomValidity(
+      "There needs to be a value for number of pages."
+    );
+    return;
+  }
+
   let read = readInput.checked;
   let title = titleInput.value;
   let author = authorInput.value;
