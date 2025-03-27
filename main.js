@@ -1,85 +1,83 @@
 const myLibrary = [];
-const TABLE = document.querySelector('#table-body');
+const TABLE = document.querySelector("#table-body");
 
-const formDialog = document.querySelector('#add-book-dialog')
+const formDialog = document.querySelector("#add-book-dialog");
 const submitButton = document.querySelector("#submit");
-const showFormBtn = document.querySelector('#new-book');
+const showFormBtn = document.querySelector("#new-book");
 
 class Book {
-    constructor (title, author, pages, read) {
-        this.title = title;
-        this.author = author;
-        this.pages = pages;
-        this.read = read;
-    }
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
 }
 
 function updateTable() {
-    let rows = []
-    myLibrary.forEach((value, index, array) => {
-        let row = document.createElement('tr');
+  let rows = [];
+  myLibrary.forEach((value, index, array) => {
+    let row = document.createElement("tr");
 
-        let title = document.createElement('td');
-        title.textContent = value.title;
+    let title = document.createElement("td");
+    title.textContent = value.title;
 
-        let author = document.createElement('td');
-        author.textContent = value.author;
+    let author = document.createElement("td");
+    author.textContent = value.author;
 
-        let pages = document.createElement('td');
-        pages.textContent = value.pages;
+    let pages = document.createElement("td");
+    pages.textContent = value.pages;
 
-        let read = document.createElement('td');
-        let checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.checked = value.read;
-        checkbox.addEventListener('click', () => {
-            value.read = checkbox.checked;
-        });
-        read.appendChild(checkbox);
+    let read = document.createElement("td");
+    let checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.checked = value.read;
+    checkbox.addEventListener("click", () => {
+      value.read = checkbox.checked;
+    });
+    read.appendChild(checkbox);
 
-        let removeButton = document.createElement('button');
-        removeButton.textContent = 'Remove Book';
-        removeButton.dataset.index = index;
-        removeButton.addEventListener('click', () => {
-            myLibrary.splice(removeButton.dataset.index, 1);
-            updateTable();
-        })
+    let removeButton = document.createElement("button");
+    removeButton.textContent = "Remove Book";
+    removeButton.dataset.index = index;
+    removeButton.addEventListener("click", () => {
+      myLibrary.splice(removeButton.dataset.index, 1);
+      updateTable();
+    });
 
-        row.appendChild(title);
-        row.appendChild(author);
-        row.appendChild(pages);
-        row.appendChild(read);
-        row.appendChild(removeButton);
-        rows.push(row);
-    })
+    row.appendChild(title);
+    row.appendChild(author);
+    row.appendChild(pages);
+    row.appendChild(read);
+    row.appendChild(removeButton);
+    rows.push(row);
+  });
 
-    TABLE.replaceChildren(...rows);
+  TABLE.replaceChildren(...rows);
 }
 
-let hol = new Book('House of Leaves', 'Mark Z. Danielewski', 709, true);
+let hol = new Book("House of Leaves", "Mark Z. Danielewski", 709, true);
 myLibrary.push(hol);
 updateTable();
 
-submitButton.addEventListener('click', (event) => {
-    const titleInput = document.querySelector('#title');
-    let title = titleInput.value;
+submitButton.addEventListener("click", (event) => {
+  const titleInput = document.querySelector("#title");
+  const authorInput = document.querySelector("#author");
+  const pageInput = document.querySelector("#numpages");
+  const readInput = document.querySelector("#read");
 
-    const authorInput = document.querySelector('#author');
-    let author = authorInput.value;
+  let read = readInput.checked;
+  let title = titleInput.value;
+  let author = authorInput.value;
+  let numPages = pageInput.value;
 
-    const pageInput = document.querySelector('#numpages');
-    let numPages = pageInput.value;
-
-    const readInput = document.querySelector('#read');
-    let read = readInput.checked;
-
-    let book = new Book(title, author, numPages, read);
-    myLibrary.push(book);
-    formDialog.close();
-    updateTable();
-    event.preventDefault();
+  let book = new Book(title, author, numPages, read);
+  myLibrary.push(book);
+  formDialog.close();
+  updateTable();
+  event.preventDefault();
 });
 
-showFormBtn.addEventListener('click', () => {
-    formDialog.showModal();
-})
+showFormBtn.addEventListener("click", () => {
+  formDialog.showModal();
+});
